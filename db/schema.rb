@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_15_164644) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_15_165344) do
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -25,6 +25,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_164644) do
     t.integer "publication_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "library_id", null: false
+    t.integer "readers_card_id"
+    t.index ["library_id"], name: "index_books_on_library_id"
+    t.index ["readers_card_id"], name: "index_books_on_readers_card_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -44,6 +48,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_164644) do
     t.date "issue_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "library_id", null: false
+    t.index ["library_id"], name: "index_readers_cards_on_library_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,6 +59,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_164644) do
     t.date "birth_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "readers_card_id"
+    t.index ["readers_card_id"], name: "index_users_on_readers_card_id"
   end
 
+  add_foreign_key "books", "libraries"
+  add_foreign_key "books", "readers_cards"
+  add_foreign_key "readers_cards", "libraries"
+  add_foreign_key "users", "readers_cards"
 end
