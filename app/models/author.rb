@@ -1,5 +1,9 @@
 class Author < ApplicationRecord
   has_and_belongs_to_many :books
+
+  validates :first_name, :last_name, presence: true
+  validates_associated :books
+
   def self.insert_100
     (1..100).each do |x|
       ActiveRecord::Base.connection.execute("INSERT INTO authors(first_name, last_name, created_at, updated_at) VALUES(\"FN#{x}\", \"LN#{x}\", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)")

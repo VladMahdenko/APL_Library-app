@@ -3,6 +3,9 @@ class ReadersCard < ApplicationRecord
   has_one :user
   has_many :books
 
+  validates :issue_date, presence: true
+  validates_associated :library, :user, :books
+
   def self.insert_100
     (1..100).each do |x|
       self.new(issue_date: "2023-03-22", library: Library.last).save

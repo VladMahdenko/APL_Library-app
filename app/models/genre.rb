@@ -1,6 +1,9 @@
 class Genre < ApplicationRecord
   has_and_belongs_to_many :books
 
+  validates :genre, presence: true
+  validates_associated :books
+
   def self.insert_100
     (1..100).each do |x|
       ActiveRecord::Base.connection.execute("INSERT INTO genres(genre, created_at, updated_at) VALUES(\"Genre#{x}\", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)")

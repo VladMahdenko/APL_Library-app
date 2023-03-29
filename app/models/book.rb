@@ -4,6 +4,9 @@ class Book < ApplicationRecord
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :authors
 
+  validates :title, :description, :isbn, :publication_year, :library_id, :readers_card_id, presence: true
+  validates_associated :authors, :readers_card, :genres, :library
+
   def self.insert_100
     (1..100).each do |x|
       self.new(title: "TL#{x}", description: "DS#{x}", isbn: "ISBN#{x}", publication_year: 2023, library: Library.last, readers_card: ReadersCard.last).save

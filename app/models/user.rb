@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   belongs_to :readers_card
 
+  validates :first_name, :last_name, :patronymic, :birth_date, :email, :readers_card_id, presence: true
+  validates_associated :readers_card
+
   def self.insert_100
     (1..100).each do |x|
       self.new(first_name: "FN#{x}", last_name: "LN#{x}", patronymic: "PT#{x}", birth_date: "2023-03-22", readers_card: ReadersCard.last, email: "EM#{x}").save
