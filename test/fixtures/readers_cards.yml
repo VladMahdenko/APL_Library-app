@@ -2,6 +2,8 @@
 
 one:
   issue_date: 2023-03-15
+  library_id: <%= Library.find(ActiveRecord::FixtureSet.identify('one')).id %>
 
 two:
   issue_date: 2023-03-15
+  library_id: <%= Library.find(ActiveRecord::FixtureSet.identify('one')).id %>

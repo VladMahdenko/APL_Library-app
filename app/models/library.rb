@@ -1,9 +1,8 @@
 class Library < ApplicationRecord
-  has_many :books
-  has_many :readers_cards
+  has_many :books, dependent: :destroy
+  has_many :readers_cards, dependent: :destroy
 
   validates :address, :name, presence: true
-  validates_associated :books, :readers_cards
 
   def self.insert_100
     (1..100).each do |x|

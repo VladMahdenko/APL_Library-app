@@ -1,10 +1,10 @@
 class ReadersCard < ApplicationRecord
   belongs_to :library
-  has_one :user
-  has_many :books
+  has_one :user, dependent: :destroy
+  has_many :books, dependent: :destroy
 
   validates :issue_date, presence: true
-  validates_associated :library, :user, :books
+  validates_associated :library
 
   def self.insert_100
     (1..100).each do |x|

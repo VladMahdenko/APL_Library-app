@@ -5,9 +5,13 @@ one:
   description: MyText
   isbn: MyString
   publication_year: 1
+  library_id: <%= Library.find(ActiveRecord::FixtureSet.identify('one')).id %>
+  readers_card_id: <%= ReadersCard.find(ActiveRecord::FixtureSet.identify('one')).id %>
 
 two:
   title: MyString
   description: MyText
   isbn: MyString
   publication_year: 1
+  library_id: <%= Library.find(ActiveRecord::FixtureSet.identify('one')).id %>
+  readers_card_id: <%= ReadersCard.find(ActiveRecord::FixtureSet.identify('one')).id %>

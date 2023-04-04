@@ -17,7 +17,8 @@ class ReadersCardsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create readers_card" do
     assert_difference("ReadersCard.count") do
-      post readers_cards_url, params: { readers_card: {  } }
+      post readers_cards_url, params: { readers_card: { issue_date: @readers_card.issue_date,
+                                                        library_id: @readers_card.library_id } }
     end
 
     assert_redirected_to readers_card_url(ReadersCard.last)
@@ -34,7 +35,8 @@ class ReadersCardsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update readers_card" do
-    patch readers_card_url(@readers_card), params: { readers_card: {  } }
+    patch readers_card_url(@readers_card), params: { readers_card: { issue_date: @readers_card.issue_date,
+                                                                     library_id: @readers_card.library_id } }
     assert_redirected_to readers_card_url(@readers_card)
   end
 

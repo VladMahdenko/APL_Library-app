@@ -5,9 +5,11 @@ one:
   last_name: MyString
   patronymic: MyString
   birth_date: 2023-03-15
+  readers_card_id: <%= ReadersCard.find(ActiveRecord::FixtureSet.identify('one')).id %>
 
 two:
   first_name: MyString
   last_name: MyString
   patronymic: MyString
   birth_date: 2023-03-15
+  readers_card_id: <%= ReadersCard.find(ActiveRecord::FixtureSet.identify('one')).id %>

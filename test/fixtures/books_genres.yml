@@ -1,0 +1,11 @@
+one:
+  genre_id: <%= Genre.find(ActiveRecord::FixtureSet.identify('one')).id %>
+  book_id: <%= Book.find(ActiveRecord::FixtureSet.identify('one')).id %>
+
+two:
+  genre_id: <%= Genre.find(ActiveRecord::FixtureSet.identify('one')).id %>
+  book_id: <%= Book.find(ActiveRecord::FixtureSet.identify('two')).id %>
+
+three:
+  genre_id: <%= Genre.find(ActiveRecord::FixtureSet.identify('two')).id %>
+  book_id: <%= Book.find(ActiveRecord::FixtureSet.identify('one')).id %>

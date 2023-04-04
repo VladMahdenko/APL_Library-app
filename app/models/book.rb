@@ -1,11 +1,11 @@
 class Book < ApplicationRecord
   belongs_to :library
   belongs_to :readers_card
-  has_and_belongs_to_many :genres
-  has_and_belongs_to_many :authors
+  has_and_belongs_to_many :genres, dependent: :destroy
+  has_and_belongs_to_many :authors, dependent: :destroy
 
-  validates :title, :description, :isbn, :publication_year, :library_id, :readers_card_id, presence: true
-  validates_associated :authors, :readers_card, :genres, :library
+  validates :title, :isbn, :publication_year, :library_id, :readers_card_id, presence: true
+  validates_associated :authors, :genres, :library, :readers_card
 
   def self.insert_100
     (1..100).each do |x|

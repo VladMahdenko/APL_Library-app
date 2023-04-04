@@ -1,0 +1,11 @@
+one:
+  author_id: <%= Author.find(ActiveRecord::FixtureSet.identify('one')).id %>
+  book_id: <%= Book.find(ActiveRecord::FixtureSet.identify('one')).id %>
+
+two:
+  author_id: <%= Author.find(ActiveRecord::FixtureSet.identify('one')).id %>
+  book_id: <%= Book.find(ActiveRecord::FixtureSet.identify('two')).id %>
+
+three:
+  author_id: <%= Author.find(ActiveRecord::FixtureSet.identify('two')).id %>
+  book_id: <%= Book.find(ActiveRecord::FixtureSet.identify('one')).id %>
