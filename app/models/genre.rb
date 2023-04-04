@@ -2,7 +2,7 @@ class Genre < ApplicationRecord
   has_and_belongs_to_many :books , dependent: :destroy
 
   validates :genre, presence: true
-  validates_associated :books
+  #validates_associated :books
 
   def self.insert_100
     (1..100).each do |x|

@@ -2,7 +2,7 @@ class Author < ApplicationRecord
   has_and_belongs_to_many :books, dependent: :destroy
 
   validates :first_name, :last_name, presence: true
-  validates_associated :books
+  #validates_associated :books
 
   def self.insert_100
     (1..100).each do |x|

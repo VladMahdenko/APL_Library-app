@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   def self.insert_100
     (1..100).each do |x|
-      self.new(first_name: "FN#{x}", last_name: "LN#{x}", patronymic: "PT#{x}", birth_date: "2023-03-22", readers_card: ReadersCard.last, email: "EM#{x}").save
+      self.new(first_name: "FN#{x}", last_name: "LN#{x}", patronymic: "PT#{x}", birth_date: "2023-03-22", readers_card: ReadersCard.find_by_id(x), email: "EM#{x}").save
     end
   end
 

@@ -12,4 +12,4 @@ two:
   last_name: MyString
   patronymic: MyString
   birth_date: 2023-03-15
-  readers_card_id: <%= ReadersCard.find(ActiveRecord::FixtureSet.identify('one')).id %>
+  readers_card_id: <%= ReadersCard.find(ActiveRecord::FixtureSet.identify('two')).id %>
