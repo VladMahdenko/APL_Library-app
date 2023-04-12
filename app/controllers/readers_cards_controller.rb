@@ -3,7 +3,8 @@ class ReadersCardsController < ApplicationController
 
   # GET /readers_cards or /readers_cards.json
   def index
-    @readers_cards = ReadersCard.all
+    @readers_cards = ReadersCardsQuery.call(params, ReadersCard.all)
+    @library = params[:library_id]
   end
 
   # GET /readers_cards/1 or /readers_cards/1.json

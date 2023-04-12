@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { registrations: 'users/registrations', sessions: 'users/sessions'}
+
   resources :books do
     resources :readers_cards
     resources :libraries
@@ -17,7 +19,9 @@ Rails.application.routes.draw do
   resources :authors do
     resources :books
   end
-  resources :libraries
+  resources :libraries do
+    resources :readers_cards
+  end
 
-
+  root to: "home#index"
 end

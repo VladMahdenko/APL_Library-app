@@ -1,10 +1,10 @@
 <p style="color: green"><%= notice %></p>
-
+<div class="text-center h-100 d-flex flex-column align-items-center justify-content-center">
 <%= render @user %>
 
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
+  <div class=""mb-4>
+  <%= link_to "Edit this user", edit_user_path(@user), class: "btn btn-primary btn-s mb-4" %>
+  <%= link_to "Back to users", users_path, class: "btn btn-primary btn-s mb-4" %>
+  <%= button_to "Destroy this user", @user, method: :delete, class: "btn btn-primary btn-s mb-4" %>
+</div>
 </div>

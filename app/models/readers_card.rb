@@ -1,4 +1,6 @@
 class ReadersCard < ApplicationRecord
+  paginates_per 10
+
   belongs_to :library
   has_one :user, dependent: :destroy
   has_many :books, dependent: :destroy
@@ -8,7 +10,7 @@ class ReadersCard < ApplicationRecord
 
   def self.insert_100
     (1..100).each do |x|
-      self.new(issue_date: "2023-03-22", library: Library.last).save
+      self.new(issue_date: "2023-03-22", number: "#{x}-#{x}-#{x}-#{x}", library: Library.last).save
     end
   end
 

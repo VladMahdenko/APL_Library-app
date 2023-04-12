@@ -1,4 +1,6 @@
 class Library < ApplicationRecord
+  paginates_per 10
+
   has_many :books, dependent: :destroy
   has_many :readers_cards, dependent: :destroy
 

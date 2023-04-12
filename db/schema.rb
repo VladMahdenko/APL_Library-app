@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_28_174806) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_12_155634) do
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -63,6 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_174806) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "library_id", null: false
+    t.string "number"
     t.index ["library_id"], name: "index_readers_cards_on_library_id"
   end
 
@@ -74,8 +75,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_174806) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "readers_card_id"
-    t.string "email"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["readers_card_id"], name: "index_users_on_readers_card_id"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "authors_books", "authors"

@@ -11,9 +11,17 @@
     </div>
   <% end %>
 
-  <p>Issue date: <%= form.date_field :issue_date %></p>
-  <p>Library: <%= form.number_field :library_id %></p>
+  <div class="form-outline mb-4">
+    <%= form.date_field :issue_date, class: "form-control form-control-lg" %>
+  </div>
+  <div class="form-outline mb-4">
+    <%= form.text_field :number, class: "form-control form-control-lg" %>
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="library">Library id:</label>
+    <%= form.number_field :library_id, class: "form-control form-control-lg", id: "library" %>
+  </div>
   <div>
-    <%= form.submit %>
+    <%= form.submit "Edit", class: "btn btn-primary btn-lg btn-block w-100" %>
   </div>
 <% end %>

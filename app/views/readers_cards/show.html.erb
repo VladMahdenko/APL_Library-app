@@ -1,10 +1,10 @@
 <p style="color: green"><%= notice %></p>
-
+<div class="text-center h-100 d-flex flex-column align-items-center justify-content-center">
 <%= render @readers_card %>
 
-<div>
-  <%= link_to "Edit this readers card", edit_readers_card_path(@readers_card) %> |
-  <%= link_to "Back to readers cards", readers_cards_path %>
-
-  <%= button_to "Destroy this readers card", @readers_card, method: :delete %>
+<div class=""mb-4>
+  <%= link_to "Edit this readers card", edit_readers_card_path(@readers_card), class: "btn btn-primary btn-s mb-4" %>
+  <%= link_to "Back to readers cards", library_readers_cards_path(@readers_card.library), class: "btn btn-primary btn-s mb-4" %>
+  <%= button_to "Destroy this readers card", @readers_card, method: :delete, class: "btn btn-primary btn-s mb-4" %>
+</div>
 </div>

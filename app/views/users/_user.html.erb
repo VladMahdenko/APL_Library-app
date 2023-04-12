@@ -1,10 +1,20 @@
-<table>
-  <tr>
-    <td><%= user.last_name %></td>
-    <td><%= user.first_name %></td>
-    <td><%= user.patronymic %></td>
-    <td><%= user.birth_date%></td>
-    <td><%= user.email %></td>
-    <td>Readers Card: <%= render user.readers_card %></td>
-  </tr>
-</table>
+<div class="table-responsive rounded mb-4">
+  <table class="table table-striped mb-0">
+    <thead class="bg-primary">
+    <tr>
+      <th>Last name</th>
+      <th>First name</th>
+      <th>Patronymic</th>
+      <th>Birth date</th>
+      <th>Email</th>
+    </tr>
+    </thead>
+    <tr>
+      <td><%= user.last_name %></td>
+      <td><%= user.first_name %></td>
+      <td><%= user.patronymic %></td>
+      <td><%= user.birth_date%></td>
+      <td><%= user.email %></td>
+    </tr>
+  </table>
+</div>

@@ -1,14 +1,72 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Readers cards</h1>
-
-<div id="readers_cards">
-  <% @readers_cards.each do |readers_card| %>
-    <%= render readers_card %>
-    <p>
-      <%= link_to "Show this readers card", readers_card %>
-    </p>
-  <% end %>
+<div class="text-center h-100 d-flex flex-column align-items-center justify-content-center">
+  <div class="table-responsive rounded">
+    <table class="table table-striped mb-0 table-bordered">
+      <thead class="bg-primary">
+      <tr>
+        <th>ID</th>
+        <th><div class="row">
+          <div class="col-sm">User Name</div>
+          <div class="col-sm">
+            <%= form_tag(library_readers_cards_path(@library), method: :get) do %>
+              <%= text_field_tag(:search, params[:search], :class=>"form-control form-control-sm")%>
+              <%= submit_tag("Search", :class=>"btn btn-secondary btn-sm btn-block")%>
+            <% end %>
+          </div>
+          <div class="col-sm">
+            <%= link_to "Asc", {:sort => "name_asc"}, { :class=>"btn btn-secondary btn-s"} %>
+          </div>
+          <div class="col-sm">
+            <%= link_to "Desc", {:sort => "name_desc"}, { :class=>"btn btn-secondary btn-s"} %>
+          </div>
+        </div></th>
+        <th><div class="row">
+          <div class="col-sm">User Age</div>
+          <div class="col-sm">
+            <%= form_tag(library_readers_cards_path(@library), method: :get) do %>
+              <%= number_field_tag(:age_search, params[:age_search], :class=>"form-control form-control-sm")%>
+              <%= submit_tag("Search", :class=>"btn btn-secondary btn-sm btn-block")%>
+            <% end %>
+          </div>
+          <div class="col-sm">
+            <%= link_to "Asc", {:sort => "age_asc"}, { :class=>"btn btn-secondary btn-s"} %>
+          </div>
+          <div class="col-sm">
+            <%= link_to "Desc", {:sort => "age_desc"}, { :class=>"btn btn-secondary btn-s"} %>
+          </div>
+        </div></th>
+        <th><div class="row">
+          <div class="col-sm">Card number</div>
+          <div class="col-sm">
+            <%= form_tag(library_readers_cards_path(@library), method: :get) do %>
+              <%=text_field_tag(:number_search, params[:number_search], :class=>"form-control form-control-sm")%>
+              <%= submit_tag("Search", :class=>"btn btn-secondary btn-sm btn-block")%>
+            <% end %>
+          </div>
+          <div class="col-sm">
+            <%= link_to "Asc", {:sort => "number_asc"}, { :class=>"btn btn-secondary btn-s"} %>
+          </div>
+          <div class="col-sm">
+            <%= link_to "Desc", {:sort => "number_desc"}, { :class=>"btn btn-secondary btn-s"} %>
+          </div>
+        </div></th>
+        <th>Card</th>
+        <th>Show</th>
+      </tr>
+      </thead>
+      <% @readers_cards.each do |readers_card| %>
+      <tr>
+        <td><%= readers_card.user.id %></td>
+        <td><%= readers_card.user.last_name + " " + readers_card.user.first_name %></td>
+        <td><%=((Time.zone.now - readers_card.user.birth_date.to_time)/1.year.seconds).floor%></td>
+        <td><%= readers_card.number %></td>
+        <td><%= link_to "Card", readers_card, class: "btn btn-primary btn-s"%></td>
+        <td><%= link_to "Show", readers_card.user, class: "btn btn-primary btn-s"%></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="divider my-4 "/>
+  <%= paginate @readers_cards %>
 </div>
-
-<%= link_to "New readers card", new_readers_card_path %>

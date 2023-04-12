@@ -3,7 +3,8 @@ class LibrariesController < ApplicationController
 
   # GET /libraries or /libraries.json
   def index
-    @libraries = Library.all
+    @libraries = LibrariesQuery.call(params, Library.all)
+    @genre_count = Genre.all.count()
   end
 
   # GET /libraries/1 or /libraries/1.json

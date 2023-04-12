@@ -1,14 +1,56 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Libraries</h1>
+<div class="text-center h-100 d-flex flex-column align-items-center justify-content-center">
 
-<div id="libraries">
+  <div class="table-responsive rounded">
+    <table class="table table-striped mb-0">
+      <thead class="bg-primary">
+        <tr>
+          <th>ID</th>
+          <th>
+              <div class="row">
+                <div class="col-sm">Name</div>
+                <div class="col-sm">
+                  <%= form_tag(libraries_path, method: :get) do %>
+                    <%= text_field_tag(:search, params[:search], :class=>"form-control form-control-sm")%>
+                    <%= submit_tag("Search", :class=>"btn btn-secondary btn-sm btn-block")%>
+                  <% end %>
+                </div>
+                <div class="col-sm">
+                  <%= link_to "Asc", {:sort => "name_asc"}, { :class=>"btn btn-secondary btn-s"} %>
+                </div>
+                <div class="col-sm">
+                  <%= link_to "Desc", {:sort => "name_desc"}, { :class=>"btn btn-secondary btn-s"} %>
+                </div>
+              </div>
+            </th>
+          <th>
+            <div class="row">
+              <div class="col-sm">Number of books</div>
+              <div class="col-sm">
+                <%= link_to "Asc", {:sort => "book_asc"}, { :class=>"btn btn-secondary btn-s"} %>
+              </div>
+              <div class="col-sm">
+                <%= link_to "Desc", {:sort => "book_desc"}, { :class=>"btn btn-secondary btn-s"} %>
+              </div>
+            </div>
+          </th>
+          <th>Number of genres</th>
+          <th>Show</th>
+        </tr>
+      </thead>
   <% @libraries.each do |library| %>
-    <%= render library %>
-    <p>
-      <%= link_to "Show this library", library %>
-    </p>
+  <tr>
+    <td><%= library.id %></td>
+    <td><%= library.name %>
+    <td><%= library.books.count %></td>
+    <td><%= @genre_count %></td>
+    <td><%= link_to "Show", library, class: "btn btn-primary btn-s" %></td>
+  </tr>
   <% end %>
+</table>
+    </div>
+  <div class="divider my-4 "/>
+<%= paginate @libraries %>
 </div>
 
-<%= link_to "New library", new_library_path %>

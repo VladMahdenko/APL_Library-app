@@ -1,7 +1,14 @@
-<table>
+<div class="table-responsive rounded mb-4">
+  <table class="table table-striped mb-0">
+    <thead class="bg-primary">
+    <tr>
+      <th>Issue date</th>
+      <th>Number</th>
+    </tr>
+    </thead>
   <tr>
-    <td><%= readers_card.id %></td>
     <td><%= readers_card.issue_date %></td>
-    <td>Library: <%= render readers_card.library %></td>
+    <td><%= readers_card.number %></td>
   </tr>
 </table>
+</div>

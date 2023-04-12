@@ -1,8 +1,12 @@
 class User < ApplicationRecord
-  belongs_to :readers_card
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+  belongs_to :readers_card, :optional => true
 
-  validates :first_name, :last_name, :patronymic, :birth_date, :email, :readers_card_id, presence: true
-  validates_associated :readers_card
+  validates :first_name, :last_name, :patronymic, :birth_date, :email, presence: true
+  #validates_associated :readers_card
 
   def self.insert_100
     (1..100).each do |x|

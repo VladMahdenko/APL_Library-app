@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-center">
+  <% if user_signed_in? %>
+    <script type="text/javascript">
+        window.location.href="/libraries"  // put your correct path in a string here
+    </script>
+  <% else %>
+    <%= render "shared/login"%>
+  <% end %>
+</div>
+
+
