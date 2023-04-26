@@ -24,4 +24,9 @@ Rails.application.routes.draw do
   end
 
   root to: "home#index"
+
+  get 'download_libraries_users_pdf', to: "downloader#download_libraries_users_pdf"
+  get 'download_libraries_pdf', to: "downloader#download_libraries_pdf"
+  get 'download_users_pdf', to: "downloader#download_users_pdf"
+  get 'download_libraries_users_csv', to: "downloader#download_libraries_users_csv"
 end

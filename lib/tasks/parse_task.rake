@@ -1,6 +1,6 @@
 namespace :parser do
   desc "Parses List of Libraries from Wikipedia to database"
-  task parse: :environment do
+  task parse_html: :environment do
     require 'open-uri'
     require 'nokogiri'
 
@@ -11,6 +11,15 @@ namespace :parser do
       if el.text.include? "Library"
         Library.new(name: el.text, address: el.text + " address").save
       end
+    end
+  end
+
+  task parse_csv: :environment do
+    require 'csv'
+
+    data = CSV.open("files/libraries_6.csv", "r", headers: true)
+    data.each do |row|
+      Library.new(name: row["Library Name"], address: row["Street Address"], zip_code: row["Zip Code"], city: row["City"]).save
     end
   end
 end

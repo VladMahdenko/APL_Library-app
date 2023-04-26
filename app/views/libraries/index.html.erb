@@ -54,3 +54,10 @@
 <%= paginate @libraries %>
 </div>
 
+<footer>
+  <%= link_to "Save libraries and users in PDF", download_libraries_users_pdf_path, class: "btn btn-primary btn-s" %>
+  <%= link_to "Save libraries PDF", download_libraries_pdf_path, class: "btn btn-primary btn-s" %>
+  <%= link_to "Save users in PDF", download_users_pdf_path, class: "btn btn-primary btn-s" %>
+  <%= link_to "Save libraries and users in CSV", download_libraries_users_csv_path, class: "btn btn-primary btn-s" %>
+</footer>
+
