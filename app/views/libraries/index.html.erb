@@ -7,6 +7,7 @@
       <thead class="bg-primary">
         <tr>
           <th>ID</th>
+          <th>Image</th>
           <th>
               <div class="row">
                 <div class="col-sm">Name</div>
@@ -42,6 +43,11 @@
   <% @libraries.each do |library| %>
   <tr>
     <td><%= library.id %></td>
+    <%if library.image.attached? %>
+      <td><%=image_tag library.image, style: "width:50px;height:50px;" %></td>
+    <%else %>
+      <td>Image is missing</td>
+    <%end %>
     <td><%= library.name %>
     <td><%= library.books.count %></td>
     <td><%= @genre_count %></td>

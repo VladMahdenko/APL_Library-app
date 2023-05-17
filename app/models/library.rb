@@ -3,6 +3,7 @@ class Library < ApplicationRecord
 
   has_many :books, dependent: :destroy
   has_many :readers_cards, dependent: :destroy
+  has_one_attached :image, dependent: :destroy
 
   validates :address, :name, presence: true
 

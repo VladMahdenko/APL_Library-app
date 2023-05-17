@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   belongs_to :readers_card, :optional => true
+  has_one_attached :avatar, :dependent => :destroy
 
   validates :first_name, :last_name, :patronymic, :birth_date, :email, presence: true
   #validates_associated :readers_card

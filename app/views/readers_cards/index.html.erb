@@ -6,6 +6,7 @@
       <thead class="bg-primary">
       <tr>
         <th>ID</th>
+        <th>Avatar</th>
         <th><div class="row">
           <div class="col-sm">User Name</div>
           <div class="col-sm">
@@ -58,6 +59,11 @@
       <% @readers_cards.each do |readers_card| %>
       <tr>
         <td><%= readers_card.user.id %></td>
+        <%if readers_card.user.avatar.attached? %>
+        <td><%=image_tag readers_card.user.avatar, style: "width:50px;height:50px;" %></td>
+        <%else %>
+          <td>Avatar is missing</td>
+        <%end %>
         <td><%= readers_card.user.last_name + " " + readers_card.user.first_name %></td>
         <td><%=((Time.zone.now - readers_card.user.birth_date.to_time)/1.year.seconds).floor%></td>
         <td><%= readers_card.number %></td>
